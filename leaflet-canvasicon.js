@@ -24,7 +24,6 @@
          * @returns {HTMLCanvasElement}
          */
         createIcon: function (oldIcon) {
-            console.log('create icon');
             var size = L.point(this.options.iconSize);
             var icon = (oldIcon && (oldIcon.tagName == 'CANVAS')) ? oldIcon : document.createElement('canvas');
             icon.width = size.x;
@@ -47,7 +46,6 @@
          * @private
          */
         _setIconStyles: function (icon, type) {
-            console.log('icon styles', arguments);
             if (typeof this.options.iconStyles == 'function') {
                 this.options.iconStyles.apply(this, arguments);
             }
