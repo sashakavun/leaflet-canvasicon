@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>L.CanvasIcon</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css"/>
+    <style type="text/css">
+        body {
+            margin:0;
+            padding:0 1em;
+        }
+
+        #description {
+            font-style:italic;
+        }
+
+        #map {
+            top:120px;
+            bottom:0;
+            left:0;
+            right:0;
+            position:absolute;
+            background:#fff;
+        }
+    </style>
+</head>
+<body>
+<h1><a href="http://github.com/keta/leaflet-canvasicon">L.CanvasIcon</a></h1>
+<p><em>Canvas Icon plugin for Leaflet library.</em> Check out <a href="https://github.com/keta/leaflet-canvasicon">code</a>.</p>
+<div id="map"></div>
+<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet-src.js"></script>
+<script type="text/javascript" src="leaflet-canvasicon.js"></script>
+<script type="text/javascript">
+    (function () {
+        /*global L */
+        'use strict';
+
+        var map = L.map('map', {
+            zoom: 12,
+            center: [37.7630, -122.4435]
+        });
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="http://osm.org/copyright\">OpenStreetMap</a> contributors' }).addTo(map);
+
+        L.marker(
+            L.latLng([37.7930, -122.4035]),
+            {
+                icon: L.canvasIcon({
+                    iconSize: [50, 50],
+                    iconAnchor: [25, 25],
+                    fillStyle: 'red',
+                    iconStyles: function (icon, type) {
+                        if (type == 'icon') {
+                            var ctx = icon.getContext('2d');
+                            var size = L.point(this.options.iconSize);
+                            var center = L.point(Math.floor(size.x / 2), Math.floor(size.y / 2));
+                            ctx.beginPath();
+                            ctx.arc(center.x, center.y, Math.min(center.x, center.y), 0, 2 * Math.PI);
+                            ctx.fillStyle = this.options.fillStyle;
+                            ctx.fill();
+                            ctx.closePath();
+                        }
+                    }
+                })
+            }
+        ).bindPopup('I have popup!').addTo(map).openPopup();
+
+        L.marker(
+            L.latLng([37.683, -122.4536]),
+            {
+                icon: L.canvasIcon({
+                    iconStyles: function (icon, type) {
+                        if (type == 'icon') {
+                            var ctx = icon.getContext('2d');
+                            var size = L.point(this.options.iconSize);
+                            var center = L.point(Math.floor(size.x / 2), Math.floor(size.y / 2));
+                            ctx.beginPath();
+                            ctx.moveTo(0, 0);
+                            ctx.lineTo(size.x, 0);
+                            ctx.lineTo(center.x, center.y);
+                            ctx.lineTo(size.x, size.y);
+                            ctx.lineTo(0, size.y);
+                            ctx.lineTo(center.x, center.y);
+                            ctx.lineTo(0, 0);
+                            ctx.fillStyle = 'green';
+                            ctx.fill();
+                            ctx.closePath();
+                            ctx.beginPath();
+                            ctx.moveTo(0, 0);
+                            ctx.lineTo(0, size.y);
+                            ctx.lineTo(center.x, center.y);
+                            ctx.lineTo(size.x, size.y);
+                            ctx.lineTo(size.x, 0);
+                            ctx.lineTo(center.x, center.y);
+                            ctx.lineTo(0, 0);
+                            ctx.fillStyle = 'yellow';
+                            ctx.fill();
+                            ctx.closePath();
+                        }
+                    }
+                })
+            }
+        ).bindPopup('I have nice popup too!').addTo(map);
+
+    }());
+</script>
+</body>
+</html>

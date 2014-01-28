@@ -1,0 +1,28 @@
+{
+  "name": "L.CanvasIcon",
+  "main": "leaflet-canvasicon.js",
+  "version": "0.1.0",
+  "authors": [
+    "Sasha Kavun <iam@sashakavun.ru>"
+  ],
+  "description": "Canvas Icon plugin for Leaflet library",
+  "keywords": [
+    "leaflet",
+    "icon",
+    "marker",
+    "canvas",
+    "map"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/keta/leaflet-canvasicon",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "leaflet": "~0.7.2"
+  }
+}
