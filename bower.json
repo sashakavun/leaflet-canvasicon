@@ -3,7 +3,7 @@
   "main": "leaflet-canvasicon.js",
   "version": "0.1.0",
   "authors": [
-    "Sasha Kavun <iam@sashakavun.ru>"
+    "Aleksandr Kavun <iam@sashakavun.ru>"
   ],
   "description": "Canvas Icon plugin for Leaflet library",
   "keywords": [
