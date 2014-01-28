@@ -1,7 +1,7 @@
 {
   "name": "L.CanvasIcon",
   "main": "leaflet-canvasicon.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "authors": [
     "Aleksandr Kavun <iam@sashakavun.ru>"
   ],

@@ -14,7 +14,7 @@
             /** @var {L.Point} */
             iconAnchor: [12, 12],
             /** @var {function} */
-            iconStyles: null,
+            drawIcon: null,
             /* @var {string} */
             className: 'leaflet-canvas-icon'
         },
@@ -46,8 +46,8 @@
          * @private
          */
         _setIconStyles: function (icon, type) {
-            if (typeof this.options.iconStyles == 'function') {
-                this.options.iconStyles.apply(this, arguments);
+            if (typeof this.options.drawIcon == 'function') {
+                this.options.drawIcon.apply(this, arguments);
             }
             L.Icon.prototype._setIconStyles.apply(this, arguments);
         }

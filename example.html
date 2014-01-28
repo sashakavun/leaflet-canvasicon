@@ -48,7 +48,7 @@
                     iconSize: [50, 50],
                     iconAnchor: [25, 25],
                     fillStyle: 'red',
-                    iconStyles: function (icon, type) {
+                    drawIcon: function (icon, type) {
                         if (type == 'icon') {
                             var ctx = icon.getContext('2d');
                             var size = L.point(this.options.iconSize);
@@ -64,42 +64,42 @@
             }
         ).bindPopup('I have popup!').addTo(map).openPopup();
 
-        L.marker(
-            L.latLng([37.683, -122.4536]),
-            {
-                icon: L.canvasIcon({
-                    iconStyles: function (icon, type) {
-                        if (type == 'icon') {
-                            var ctx = icon.getContext('2d');
-                            var size = L.point(this.options.iconSize);
-                            var center = L.point(Math.floor(size.x / 2), Math.floor(size.y / 2));
-                            ctx.beginPath();
-                            ctx.moveTo(0, 0);
-                            ctx.lineTo(size.x, 0);
-                            ctx.lineTo(center.x, center.y);
-                            ctx.lineTo(size.x, size.y);
-                            ctx.lineTo(0, size.y);
-                            ctx.lineTo(center.x, center.y);
-                            ctx.lineTo(0, 0);
-                            ctx.fillStyle = 'green';
-                            ctx.fill();
-                            ctx.closePath();
-                            ctx.beginPath();
-                            ctx.moveTo(0, 0);
-                            ctx.lineTo(0, size.y);
-                            ctx.lineTo(center.x, center.y);
-                            ctx.lineTo(size.x, size.y);
-                            ctx.lineTo(size.x, 0);
-                            ctx.lineTo(center.x, center.y);
-                            ctx.lineTo(0, 0);
-                            ctx.fillStyle = 'yellow';
-                            ctx.fill();
-                            ctx.closePath();
-                        }
-                    }
-                })
+        L.SquareIcon = L.CanvasIcon.extend({
+            _setIconStyles: function (icon, type) {
+                if (type == 'icon') {
+                    var ctx = icon.getContext('2d');
+                    var size = L.point(this.options.iconSize);
+                    var center = L.point(Math.floor(size.x / 2), Math.floor(size.y / 2));
+                    ctx.beginPath();
+                    ctx.moveTo(0, 0);
+                    ctx.lineTo(size.x, 0);
+                    ctx.lineTo(center.x, center.y);
+                    ctx.lineTo(size.x, size.y);
+                    ctx.lineTo(0, size.y);
+                    ctx.lineTo(center.x, center.y);
+                    ctx.lineTo(0, 0);
+                    ctx.fillStyle = 'green';
+                    ctx.fill();
+                    ctx.closePath();
+                    ctx.beginPath();
+                    ctx.moveTo(0, 0);
+                    ctx.lineTo(0, size.y);
+                    ctx.lineTo(center.x, center.y);
+                    ctx.lineTo(size.x, size.y);
+                    ctx.lineTo(size.x, 0);
+                    ctx.lineTo(center.x, center.y);
+                    ctx.lineTo(0, 0);
+                    ctx.fillStyle = 'yellow';
+                    ctx.fill();
+                    ctx.closePath();
+                }
             }
-        ).bindPopup('I have nice popup too!').addTo(map);
+        });
+
+        L.marker(L.latLng([37.683, -122.4536]))
+            .setIcon(new L.SquareIcon())
+            .bindPopup('I have nice popup too!')
+            .addTo(map);
 
     }());
 </script>
