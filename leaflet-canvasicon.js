@@ -55,7 +55,7 @@
 
     /**
      * Canvas Icon factory
-     * @param {object} options
+     * @param {Object} options
      * @returns {L.CanvasIcon}
      */
     L.canvasIcon = function (options) {
