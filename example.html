@@ -25,8 +25,8 @@
     </style>
 </head>
 <body>
-<h1><a href="http://github.com/keta/leaflet-canvasicon">L.CanvasIcon</a></h1>
-<p><em>Canvas Icon plugin for Leaflet library.</em> Check out <a href="https://github.com/keta/leaflet-canvasicon">code</a>.</p>
+<h1><a href="http://github.com/sashakavun/leaflet-canvasicon">L.CanvasIcon</a></h1>
+<p><em>Canvas Icon plugin for Leaflet library.</em> Check out <a href="https://github.com/sashakavun/leaflet-canvasicon">code</a>.</p>
 <div id="map"></div>
 <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet-src.js"></script>
 <script type="text/javascript" src="leaflet-canvasicon.js"></script>
@@ -47,7 +47,7 @@
                 icon: L.canvasIcon({
                     iconSize: [50, 50],
                     iconAnchor: [25, 25],
-                    fillStyle: 'red',
+                    fillStyle: 'rgba(255,0,0,.5)',
                     drawIcon: function (icon, type) {
                         if (type == 'icon') {
                             var ctx = icon.getContext('2d');
@@ -62,9 +62,13 @@
                     }
                 })
             }
-        ).bindPopup('I have popup!').addTo(map).openPopup();
+        ).bindPopup('I have a popup!').addTo(map).openPopup();
 
         L.SquareIcon = L.CanvasIcon.extend({
+            options: {
+                iconSize: [70, 70],
+                iconAnchor: [35, 35]
+            },
             _setIconStyles: function (icon, type) {
                 if (type == 'icon') {
                     var ctx = icon.getContext('2d');
@@ -78,7 +82,7 @@
                     ctx.lineTo(0, size.y);
                     ctx.lineTo(center.x, center.y);
                     ctx.lineTo(0, 0);
-                    ctx.fillStyle = 'green';
+                    ctx.fillStyle = 'rgba(0,255,0,.5)';
                     ctx.fill();
                     ctx.closePath();
                     ctx.beginPath();
@@ -93,6 +97,7 @@
                     ctx.fill();
                     ctx.closePath();
                 }
+                L.CanvasIcon.prototype._setIconStyles.apply(this, arguments);
             }
         });
 
