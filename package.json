@@ -1,6 +1,7 @@
 {
   "name": "leaflet-canvasicon",
-  "version": "0.1.4",
+  "version": "0.1.5",
+  "license": "MIT",
   "description": "Canvas Icon plugin for Leaflet library",
   "main": "leaflet-canvasicon.js",
   "repository": {
