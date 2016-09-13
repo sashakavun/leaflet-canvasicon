@@ -2,7 +2,7 @@
   "name": "leaflet-canvasicon",
   "version": "0.1.4",
   "description": "Canvas Icon plugin for Leaflet library",
-  "main": "leaflet-piechart.js",
+  "main": "leaflet-canvasicon.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/sashakavun/leaflet-canvasicon.git"
