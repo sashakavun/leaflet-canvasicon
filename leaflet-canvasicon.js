@@ -1,4 +1,4 @@
-/*global L */
+/*global L, define */
 (function () {
     'use strict';
 
@@ -13,30 +13,36 @@
             iconSize: [24, 24],
             /** @var {L.Point} */
             iconAnchor: [12, 12],
-            /** @var {function} */
+            /** @var {Function} */
             drawIcon: null,
-            /* @var {string} */
+            /** @var {string} */
             className: 'leaflet-canvas-icon'
         },
 
         /**
-         * @param {HTMLElement} oldIcon
+         * @param {HTMLElement} icon
          * @returns {HTMLCanvasElement}
          */
-        createIcon: function (oldIcon) {
+        createIcon: function (icon) {
             var size = L.point(this.options.iconSize);
-            var icon = (oldIcon && (oldIcon.tagName == 'CANVAS')) ? oldIcon : document.createElement('canvas');
+
+            if (!icon || (icon.tagName != 'CANVAS')) {
+                icon = document.createElement('canvas');
+            }
+
             icon.width = size.x;
             icon.height = size.y;
+
             this._setIconStyles(icon, 'icon');
+
             return icon;
         },
 
         /**
-         * @param {HTMLElement} oldIcon
+         * @param {HTMLElement} icon
          * @returns {null}
          */
-        createShadow: function (oldIcon) {
+        createShadow: function (icon) {
             return null;
         },
 
@@ -49,6 +55,7 @@
             if (typeof this.options.drawIcon == 'function') {
                 this.options.drawIcon.apply(this, arguments);
             }
+
             L.Icon.prototype._setIconStyles.apply(this, arguments);
         }
     });
@@ -68,5 +75,4 @@
     if ((typeof define == 'function') && define.amd) {
         define(L.CanvasIcon);
     }
-
-}());
+})();

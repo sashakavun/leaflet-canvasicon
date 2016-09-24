@@ -3,33 +3,32 @@
 <head>
     <title>L.CanvasIcon</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@0.7.7/dist/leaflet.css"/>
     <style type="text/css">
         body {
-            margin:0;
-            padding:0 1em;
-        }
-
-        #description {
-            font-style:italic;
+            margin: 0;
+            padding: 0 1em;
         }
 
         #map {
-            top:120px;
-            bottom:0;
-            left:0;
-            right:0;
-            position:absolute;
-            background:#fff;
+            top: 120px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            position: absolute;
+            background: #fff;
         }
     </style>
 </head>
 <body>
-<h1><a href="http://github.com/sashakavun/leaflet-canvasicon">L.CanvasIcon</a></h1>
-<p><em>Canvas Icon plugin for Leaflet library.</em> Check out <a href="https://github.com/sashakavun/leaflet-canvasicon">code</a>.</p>
+<h1><a href="https://github.com/sashakavun/leaflet-canvasicon">L.CanvasIcon</a></h1>
+<p>Canvas Icon plugin for Leaflet library.</p>
+
 <div id="map"></div>
-<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet-src.js"></script>
+
+<script src="https://unpkg.com/leaflet@0.7.7/dist/leaflet.js"></script>
 <script type="text/javascript" src="leaflet-canvasicon.js"></script>
+
 <script type="text/javascript">
     (function () {
         'use strict';
@@ -39,7 +38,9 @@
             center: [37.7630, -122.4435]
         });
 
-        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="http://osm.org/copyright\">OpenStreetMap</a> contributors' }).addTo(map);
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
 
         L.marker(
             L.latLng([37.7930, -122.4035]),
@@ -106,7 +107,7 @@
             .bindPopup('I have nice popup too!')
             .addTo(map);
 
-    }());
+    })();
 </script>
 </body>
 </html>

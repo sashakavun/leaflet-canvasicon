@@ -1,9 +1,12 @@
 {
   "name": "leaflet-canvasicon",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "license": "MIT",
   "description": "Canvas Icon plugin for Leaflet library",
+  "keywords": ["leaflet", "canvas", "marker", "icon"],
+  "author": "ALeksandr Kavun <iam@sashakavun.ru>",
   "main": "leaflet-canvasicon.js",
+  "bugs": "https://github.com/sashakavun/leaflet-canvasicon/issues",
   "repository": {
     "type": "git",
     "url": "git://github.com/sashakavun/leaflet-canvasicon.git"
